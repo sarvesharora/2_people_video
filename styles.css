@@ -83,30 +83,29 @@ button {
   text-align: center;
 }
 
-@media screen and (max-width: 600px) {
-#remote-video {
-  top: 0;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  object-fit: contain;
-  background-color: darkgray;
-  position: absolute;
-  z-index: 0;
-}
-#local-video {
-  top: 0;
-  width: 50%;
-  object-fit: contain;
-  height: 25%;
-  z-index: 1;
-  right: 0;
-  background-color: #444444;
-  position: absolute;
-}
-#features button{
-  height: 50px;
-  margin: 25px;
-  font-size: larger;
-}
+@media only screen and (max-device-width: 600px) {
+  #remote-video {
+    top: 0;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    object-fit: contain;
+    background-color: darkgray;
+    position: absolute;
+    z-index: 0;
+  }
+  #local-video {
+    top: 0;
+    width: 50%;
+    object-fit: contain;
+    height: 25%;
+    z-index: 1;
+    right: 0;
+    background-color: #444444;
+    position: absolute;
+  }
+  #features button {
+    font-size: 50px;
+    margin: 10px;
+  }
 }

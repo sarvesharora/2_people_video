@@ -3,6 +3,8 @@ const SUF = "MEET"
 var room_id;
 var getUserMedia = window.navigator.getUserMedia || window.navigator.webkitGetUserMedia || window.navigator.mozGetUserMedia;
 var local_stream;
+let mainpeer;
+
 function createRoom() {
     console.log("Creating Room")
     let room = document.getElementById("room-input").value;
@@ -12,6 +14,7 @@ function createRoom() {
     }
     room_id = PRE + room + SUF;
     let peer = new Peer(room_id)
+    mainpeer = peer;
     peer.on('open', (id) => {
         console.log("Peer Connected with ID: ", id)
         hideModal()
@@ -26,7 +29,7 @@ function createRoom() {
     peer.on('call', (call) => {
         call.answer(local_stream);
         call.on('stream', (stream) => {
-            setRemoteStream(stream)
+            setRemoteStream(stream);
         })
     })
 }
@@ -59,7 +62,7 @@ function notify(msg) {
 }
 
 function joinRoom() {
-    console.log("Joining Room")
+    console.log("Joining Room");
     let room = document.getElementById("room-input").value;
     if (room == " " || room == "") {
         alert("Please enter room number")
@@ -68,6 +71,7 @@ function joinRoom() {
     room_id = PRE + room + SUF;
     hideModal()
     let peer = new Peer()
+    mainpeer = peer;
     peer.on('open', (id) => {
         console.log("Connected with Id: " + id)
         getUserMedia({ video: true, audio: true }, (stream) => {
@@ -107,4 +111,11 @@ const playstop = () => {
         console.log('the video is on');
         local_stream.getVideoTracks()[0].enabled = true;
     }
+}
+
+const disconnect = () => {
+    // mainpeer.disconnect();
+    // window.location = "/";
+    mainpeer.destroy();
+    window.location = "/";
 }

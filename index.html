@@ -1,11 +1,11 @@
 <html>
 
     <head>
-        <title>Delta Meet</title>
+        <title>clone teams lite</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
-        <h1 class="title">Delta Meet</h1>
+        <h1 class="title">Clone teams lite</h1>
         <p id="notification" hidden></p>
         <div class="entry-modal" id="entry-modal">
             <p>Create or Join Meeting</p>
@@ -17,11 +17,15 @@
         </div>
         <div class="meet-area">
             <!-- Remote Video Element-->
-            <video id="remote-video"></video>
+            <video style="height: 100%;" id="remote-video"></video>
 
             <!-- Local Video Element-->
             <video id="local-video"></video>
         </div>
+        <div id='features'>
+        <button onclick="muteunmute()">mute/unmute</button>
+        <button onclick="playstop()">video/novideo</button>
+    </div>
     </body>
 
     <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>

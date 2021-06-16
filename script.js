@@ -36,13 +36,13 @@ function setLocalStream(stream) {
     let video = document.getElementById("local-video");
     video.srcObject = stream;
     video.muted = true;
-    video.play();
+    video.autoplay = true;
 }
 function setRemoteStream(stream) {
 
     let video = document.getElementById("remote-video");
     video.srcObject = stream;
-    video.play();
+    video.autoplay = true;
 }
 
 function hideModal() {
@@ -83,4 +83,28 @@ function joinRoom() {
         })
 
     })
+}
+
+const muteunmute = () => {
+    const enabled = local_stream.getAudioTracks()[0].enabled;
+    if (enabled) {
+        console.log('muted');
+        local_stream.getAudioTracks()[0].enabled = false;
+    }
+    else {
+        console.log('unmuted');
+        local_stream.getAudioTracks()[0].enabled = true;
+    }
+}
+
+const playstop = () => {
+    const enabled = local_stream.getVideoTracks()[0].enabled;
+    if (enabled) {
+        console.log('the video stopped');
+        local_stream.getVideoTracks()[0].enabled = false;
+    }
+    else {
+        console.log('the video is on');
+        local_stream.getVideoTracks()[0].enabled = true;
+    }
 }
